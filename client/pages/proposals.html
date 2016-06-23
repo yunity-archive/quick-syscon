@@ -1,0 +1,52 @@
+<template name="proposals">
+  <h1>Proposals</h1>
+  <div class="ui menu fitted basic">
+    <a class="item">
+      <div class="ui icon button green create">
+        <i class="plus icon"></i>
+      </div>
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui cards proposals">
+    {{#each proposals}}
+      <div class="card-wrapper">
+        <a class="ui card" href="#">
+          <div class="content">
+            <div class="header">{{name}}</div>
+            <div class="description">
+              <p>{{description}}</p>
+            </div>
+          </div>
+          <div class="extra content">
+            <div class="left floated meta">
+              <span>
+                <i class="check icon"></i>
+                {{votes}} Votes
+              </span>
+              <span>
+                <i class="time icon"></i>
+                {{sinceCreated}}
+              </span>
+            </div>
+            <div class="right floated ui icon menu basic">
+              <a class="edit item">
+                <i class="pencil icon"></i>
+              </a>
+              <a class="delete item text-hover-red">
+                <i class="remove icon"></i>
+              </a>
+            </div>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+</template>
