@@ -2,24 +2,17 @@
 
 set -e
 
-BRANCH=$1
-
-if [ "x$BRANCH" = "x" ]; then
-  echo "Please pass branch to deploy as first argument"
-  exit 1
-fi
-
-if [ ! -d quick-syscon ]; then
-  git clone https://github.com/yunity/quick-syscon.git
-fi
-
 (
-  cd quick-syscon && \
-  git clean -fd && \
-  git checkout $BRANCH && \
-  git pull && \
-  npm install --production && \
-  meteor build ~\quick-syscon --architecture os.linux.x86_64
+  tar -zxf quick-syscon.tar.gz && \
+  cd bundle/programs/server && \
+  npm install --production
+) && \
+(sudo systemctl stop nodejs-quick-syscon || true) && \
+(
+  cd ~ && \
+  (rm -rf bundle_run || true) && \
+  mv bundle bundle_run && \
+  mv quick-syscon.tar.gz quick-syscon_DEPLOYED.tar.gz
 )
 
-touch /tmp/quick-syscon.reload
+sudo systemctl start nodejs-quick-syscon
