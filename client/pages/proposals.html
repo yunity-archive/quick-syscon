@@ -2,9 +2,10 @@
   <ul>
     {{#if currentUser}}
         <a href="#" class="logout">Logout</a>
+    {{else}}
+      <a href="{{pathFor route='login'}}">Login</a>
+      <!-- <a href="{{pathFor route='login'}}">Login</a> -->
     {{/if}}
-    <a href="{{pathFor route='register'}}">Register</a>
-    <a href="{{pathFor route='login'}}">Login</a>
   </ul>
 
   <h1>Proposals</h1>
