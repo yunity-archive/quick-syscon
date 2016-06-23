@@ -8,6 +8,9 @@ Template.proposals.helpers({
   },
   duration: function() {
     return Proposals.findOne({_id: this._id}).duration;
+  },
+  loggedInUser: function() {
+    return Meteor.user().emails[0].address;
   }
 });
 
@@ -30,5 +33,10 @@ Template.proposals.events({
       Router.go('proposal', {_id: this._id});
       return false;
     }
+  },
+  'click .logout': function(event){
+      event.preventDefault();
+      Meteor.logout();
+      Router.go('login');
   }
 });

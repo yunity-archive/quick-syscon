@@ -1,10 +1,10 @@
 <template name="proposals">
   <ul>
     {{#if currentUser}}
-        <a href="#" class="logout">Logout</a>
+        Welcome {{loggedInUser}}       -> <a href="#" class="logout">Logout</a>
     {{else}}
       <a href="{{pathFor route='login'}}">Login</a>
-      <!-- <a href="{{pathFor route='login'}}">Login</a> -->
+      <a href="{{pathFor route='register'}}">Register</a>
     {{/if}}
   </ul>
 
