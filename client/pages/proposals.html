@@ -20,7 +20,7 @@
       <div class="card-wrapper">
         <a class="ui card" href="#">
           <div class="content">
-            <div class="header">{{name}}</div>
+            <div class="header">{{topic}}</div>
             <div class="description">
               <p>{{description}}</p>
             </div>
@@ -29,11 +29,15 @@
             <div class="left floated meta">
               <span>
                 <i class="check icon"></i>
-                {{votes}} Votes
+                {{votes}} votes
               </span>
               <span>
                 <i class="time icon"></i>
                 {{sinceCreated}}
+              </span>
+              <span>
+                <i class="time icon"></i>
+                {{duration}} hours
               </span>
             </div>
             <div class="right floated ui icon menu basic">

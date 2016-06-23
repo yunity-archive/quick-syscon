@@ -7,6 +7,9 @@ TemplateClass.helpers({
   },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
+  },
+  duration: function() {
+    return Proposals.findOne({_id: this._id}).duration;
   }
 });
 

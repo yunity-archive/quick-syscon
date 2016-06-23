@@ -1,16 +1,15 @@
 Meteor.startup(function() {
   const proposal = {
-    name: 'US Presidents 2016',
-    description: 'Either way, your planet is doomed!',
+    topic: 'Demo Proposal',
+    description: 'Unity is great',
     choices: [
-      {name: 'Donald "The Wall" Trump'},
-      {name: 'Ted "Zodiac Killer" Cruz'},
-      {name: 'Bernie Sanders'},
-      {name: 'Hillary Clinton'}
-    ]
+      {name: 'Yes'},
+      {name: 'No'}
+    ],
+    duration: 24
   }
 
-  if (!Proposals.findOne({name: proposal.name})) {
+  if (!Proposals.findOne({topic: proposal.topic})) {
     Proposals.insert(proposal);
   }
 });

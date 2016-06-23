@@ -7,7 +7,7 @@ const ChoiceSchema = new SimpleSchema({
 });
 
 let schema = new SimpleSchema({
-  name: {
+  topic: {
     type: String,
     max: 100
   },
@@ -22,6 +22,11 @@ let schema = new SimpleSchema({
   choices: {
     type: [ChoiceSchema],
     minCount: 1
+  },
+  duration: {
+    type: Number,
+    min: 1,
+    max: 24
   }
 });
 
