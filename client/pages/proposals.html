@@ -1,4 +1,12 @@
 <template name="proposals">
+  <ul>
+    {{#if currentUser}}
+        <a href="#" class="logout">Logout</a>
+    {{/if}}
+    <a href="{{pathFor route='register'}}">Register</a>
+    <a href="{{pathFor route='login'}}">Login</a>
+  </ul>
+
   <h1>Proposals</h1>
   <div class="ui menu fitted basic">
     <a class="item">

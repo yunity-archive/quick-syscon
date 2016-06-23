@@ -1,2 +1,7 @@
-Meteor.publish('proposals', () => Proposals.find());
-Meteor.publish('votes', () => Votes.find());
+// on startup we publish all collections - // Meteor.startup() runs AFTER this code!
+Meteor.publish("proposals", () => {
+  return Proposals.find();
+});
+Meteor.publish("votes", () => {
+  return Votes.find();
+});

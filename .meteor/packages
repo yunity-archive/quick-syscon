@@ -29,6 +29,12 @@ fabienb4:autoform-semantic-ui
 
 momentjs:moment
 
+iron:router
+
+accounts-password
+accounts-ui
+
+underscore
+matb33:collection-hooks
+
 aramk:utility
-aramk:routes
-voting:collections

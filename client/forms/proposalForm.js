@@ -25,5 +25,5 @@ const Form = Forms.defineModelForm({
 });
 
 function routeBack() {
-  Router.goToLastPath() || Router.go('proposals');
+  Router.go(Router.getLastPath());
 }

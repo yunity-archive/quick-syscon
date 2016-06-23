@@ -1,6 +1,4 @@
-const TemplateClass = Template.proposal;
-
-TemplateClass.helpers({
+Template.proposal.helpers({
   votes: function() {
     return getVotes.call(this);
   },
@@ -34,12 +32,12 @@ TemplateClass.helpers({
   }
 });
 
-TemplateClass.events({
+Template.proposal.events({
   'click .back.item': function() {
     Router.go('proposals');
   },
   'click .edit.item': function(e, template) {
-    Router.go('proposalEdit', {_id: template.data.doc._id});
+    // Router.go('proposalEdit', {_id: template.data.doc._id});
   }
 });
 

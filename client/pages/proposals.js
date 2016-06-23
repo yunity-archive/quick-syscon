@@ -1,6 +1,4 @@
-const TemplateClass = Template.proposals;
-
-TemplateClass.helpers({
+Template.proposals.helpers({
   proposals: () => Proposals.find({}, {sort: {'dateCreated': -1}}),
   votes: function() {
     return Votes.find({proposalId: this._id}).count();
@@ -13,12 +11,12 @@ TemplateClass.helpers({
   }
 });
 
-TemplateClass.events({
+Template.proposals.events({
   'click .create.button': function() {
-    Router.go('proposalCreate');
+    // Router.go('proposalCreate');
   },
   'click .card .edit.item': function(e) {
-    Router.go('proposalEdit', {_id: this._id});
+    // Router.go('proposalEdit', {_id: this._id});
     return false;
   },
   'click .card .delete.item': function(e) {
