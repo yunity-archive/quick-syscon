@@ -1,0 +1,16 @@
+machine:
+  node:
+    version: 0.10.40
+dependencies:
+  cache_directories:
+    - ~/.meteor
+  override:
+    - curl https://install.meteor.com | /bin/sh
+    - npm install
+    - meteor update
+deployment:
+  yuca:
+    branch: master
+    commands:
+      - meteor build deploy/
+      - /bin/sh deploy.sh

@@ -3,6 +3,7 @@
 set -e
 
 HOST=yuca.yunity.org
+USERNAME=deploy_syscon
 
 BRANCH=$CIRCLE_BRANCH
 
@@ -12,5 +13,6 @@ fi
 
 echo "deploying branch [$BRANCH] to [$HOST]"
 
-scp deploy/remote.sh deploy@$HOST:deploy.sh
-ssh deploy@$HOST ./deploy.sh $BRANCH
+scp deploy/remote.sh $USERNAME@$HOST:deploy.sh
+scp deploy/quick-syscon.tar.gz $USERNAME@$HOST:quick-syscon.tar.gz
+ssh $USERNAME@$HOST /bin/sh deploy.sh
