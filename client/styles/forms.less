@@ -1,0 +1,70 @@
+@input-padding: 0.5rem !important;
+.ui.form {
+  margin: 0 auto;
+  form {
+    text-align: left;
+  }
+  &.crud {
+    max-width: 800px;
+  }
+  .field {
+    .ui.input {
+      input {
+        padding: @input-padding;
+      }
+      .ui.label {
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: normal;
+        line-height: 1.6rem;
+      }
+    }
+    &:disabled, &.disabled {
+      opacity: 1;
+    }
+    &.no-label {
+      margin-top: 1.5rem;
+      > label {
+        display: none;
+      }
+    }
+  }
+  .ui.buttons {
+    margin-right: 0;
+  }
+  .crud.buttons {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    display: inline-block;
+    width: 100%;
+    .button {
+      margin: 0 0.5rem;
+      float: right;
+      &.cancel {
+        float: left;
+      }
+    }
+  }
+  // Semantic-UI theme for AutoForm.
+  .ui.secondary.attached.segment {
+    background: none;
+    padding: 0.5rem;
+    > .field {
+      .ui.input {
+        width: 100%;
+        .ui.red.corner {
+          font-size: 0.65rem;
+          .icon {
+            font-size: 1rem;
+            top: -0.25rem;
+            left: 0.5rem;
+          }
+        }
+      }
+      input {
+        width: 100%;
+      }
+    }
+  }
+}
