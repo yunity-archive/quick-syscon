@@ -9,8 +9,8 @@ dependencies:
     - npm install
     - meteor update
 deployment:
-  dev:
+  yuca:
     branch: master
     commands:
       - meteor build deploy/
-      - ./deploy.sh
+      - /bin/sh deploy.sh
