@@ -7,7 +7,8 @@ Template.topics.events({
     Router.go('topicCreate');
   },
   'click .card .edit.item': function(e) {
-    Router.go('topicEdit', {_id: this._id});
+    Session.set('editTopic', this._id);
+    Router.go('topicEdit');
     return false;
   },
   'click .card .delete.item': function(e) {
