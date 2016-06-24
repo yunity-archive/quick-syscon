@@ -18,6 +18,9 @@ Template.topics.events({
     return false;
   },
   'click .topics .ui.card': function(e, template) {
+    // open decision view
+
+
     if ($(e.target).parent('a.item').length === 0 && !$(e.target).is('a.item')) {
       Router.go('topics', {_id: this._id});
       return false;
