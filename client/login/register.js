@@ -11,7 +11,7 @@ Template.register.events({
                 alert(error.reason);
                 console.log(error.reason); // Output error if registration fails
             } else {
-                Router.go("proposals"); // Redirect user if registration succeeds
+                Router.go("topics"); // Redirect user if registration succeeds
             }
         });
     },

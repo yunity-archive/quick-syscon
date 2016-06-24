@@ -25,6 +25,9 @@ underscore
 accounts-password
 accounts-ui
 
+aramk:utility
+aramk:routes
+
 aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
@@ -34,6 +37,4 @@ fabienb4:autoform-semantic-ui
 
 momentjs:moment
 
-iron:router
 matb33:collection-hooks
-aramk:utility

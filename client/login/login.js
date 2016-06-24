@@ -7,7 +7,7 @@ Template.login.events({
             if(error){
                 console.log(error.reason);
             } else {
-                Router.go("proposals");
+                Router.go("topics");
             }
         });
     },

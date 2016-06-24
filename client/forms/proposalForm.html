@@ -1,9 +1,8 @@
 <template name="proposalForm">
   <div class="ui form proposal-form">
-    <h2>{{formTitle}}</h2>
+    <h2>Proposal</h2>
     {{#autoForm collection=collection id=formName doc=doc type=formType resetOnSuccess=resetOnSuccess}}
-      {{> afQuickField name="topic"}}
-      {{> afQuickField name="description" rows=3}}
+      {{> afQuickField name="proposition" rows=3}}
       {{> afQuickField name="choices"}}
       {{> afQuickField name="duration" label="Duration in hours (1-24)"}}
     {{/autoForm}}
