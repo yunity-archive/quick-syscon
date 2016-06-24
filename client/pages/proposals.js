@@ -1,3 +1,11 @@
+import { Accounts } from 'meteor/accounts-base';
+
+Meteor.startup(() => {
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_ONLY',
+  });
+});
+
 Template.proposals.helpers({
   proposals: () => Proposals.find({}, {sort: {'dateCreated': -1}}),
   votes: function() {
