@@ -25,12 +25,11 @@ underscore
 accounts-password
 accounts-ui
 
-aramk:utility
-aramk:routes
-
 aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
+
+iron:router
 
 semantic:ui-css@2.1.2
 fabienb4:autoform-semantic-ui

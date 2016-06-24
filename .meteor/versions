@@ -9,10 +9,6 @@ aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
 allow-deny@1.0.5
-aramk:q@1.0.1_1
-aramk:routes@0.3.3
-aramk:tinycolor@1.1.0_1
-aramk:utility@0.12.0
 autoupdate@1.2.10
 babel-compiler@6.8.3
 babel-runtime@0.1.9
@@ -26,8 +22,6 @@ caching-compiler@1.0.5
 caching-html-compiler@1.0.6
 callback-hook@1.0.9
 check@1.2.3
-coffeescript@1.1.2
-cosmos:browserify@0.5.1
 ddp@1.2.5
 ddp-client@1.2.8
 ddp-common@1.2.6
@@ -98,13 +92,11 @@ spacebars-compiler@1.0.12
 srp@1.0.9
 standard-minifier-css@1.0.7
 standard-minifier-js@1.0.7
-stevezhu:lodash@3.10.1
 templating@1.1.12
 templating-tools@1.0.4
 tracker@1.0.14
 ui@1.0.11
 underscore@1.0.9
-urbanetic:utility@1.2.0
 url@1.0.10
 webapp@1.2.9
 webapp-hashing@1.0.9
