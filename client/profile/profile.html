@@ -1,23 +1,29 @@
 <template name="profile">
-  <h1>Profile</h1>
+  <h1 class="ui horizontal divider header">Profile</h1>
 
-  <h2>Tilmann</h2>
+  <h2 class="ui horizontal divider header">{{userdata.name}}</h2>
 
   <h3>Contact</h3>
-  <ul>
-    <li><i class="mail icon"></i>tilmi@beh.de</li>
-    <li><i class="phone icon"></i>0800666</li>
-  </ul>
-  <h3>Invitations</h3>
-  <ul>
-    <li><a>yunity PR</a></li>
-    <li><a>FSINT</a></li>
-  </ul>
-  <h3>Search</h3>
-  <div class="ui form">
-    <input>
-    <div class="crud buttons">
-      <button type="submit" class="ui button submit red">Join</button>
-    </div>
+  <div>
+    <i class="mail icon"></i>{{userdata.mail}}
+  </div>
+  <div>
+    <i class="phone icon"></i>{{userdata.slack}}
+  </div>
+
+  <h2 class="ui horizontal divider header">Groups</h2>
+
+  <h3>My Groups</h3>
+  <div>
+    {{#each mygroups}}
+      <div><a>{{name}}</a></div>
+    {{/each}}
+  </div>
+
+  <h3>Other Groups</h3>
+  <div>
+    {{#each othergroups}}
+      <div><a>{{name}}</a></div>
+    {{/each}}
   </div>
 </template>

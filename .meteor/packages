@@ -20,6 +20,11 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 session
 less
 
+underscore
+
+accounts-password
+accounts-ui
+
 aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
@@ -30,11 +35,5 @@ fabienb4:autoform-semantic-ui
 momentjs:moment
 
 iron:router
-
-accounts-password
-accounts-ui
-
-underscore
 matb33:collection-hooks
-
 aramk:utility
