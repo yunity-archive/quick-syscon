@@ -1,6 +1,21 @@
 <template name="topicVote">
-  {{topic}}
-  {{proposal}}
+  <div class="ui form proposal-form">
 
-  VOTE
+    <h2>Your decision on ... </h2>
+
+    <div class="ui cards topics">
+        <div class="card-wrapper">
+          <a class="ui card" href="#">
+            <div class="content">
+              <div class="header">Topic: {{topic}}
+              </div>
+              Proposal: {{proposal}}
+            </div>
+            </a>
+        </div>
+        <button type="button" class="ui green button">Ok</button>
+        <button type="button" class="ui red button">No</button>
+
+      </div>
+  </div>
 </template>
