@@ -22,7 +22,18 @@
           <div class="content">
             <div class="header">{{text}}</div>
           </div>
+
           <div class="extra content">
+            <div class="left floated meta">
+              <!-- <span>
+                <i class="check icon"></i>
+                {{votes}} Votes
+              </span> -->
+              <span>
+                <i class="time icon"></i>
+                {{sinceCreated}}
+              </span>
+            </div>
             <div class="right floated ui icon menu basic">
               <a class="edit item">
                 <i class="pencil icon"></i>
@@ -32,6 +43,7 @@
               </a>
             </div>
           </div>
+
         </a>
       </div>
     {{/each}}
