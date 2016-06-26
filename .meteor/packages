@@ -25,6 +25,8 @@ underscore
 accounts-password
 accounts-ui
 
+acemtp:accounts-slack
+
 aldeed:autoform
 aldeed:collection2
 aldeed:simple-schema
