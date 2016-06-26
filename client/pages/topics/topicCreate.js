@@ -4,13 +4,10 @@ AutoForm.addHooks(['createTopic'],{
             // register all users on topic TODO later only group
             var allUsers = [];
             var users = Meteor.users.find();
-            console.log(Meteor.users.find().count());
             users.forEach(function(u){
               allUsers.push(u._id);
             });
             doc.votingUsers = allUsers;
-            console.log(allUsers);
-
             return doc;
         }
     },
@@ -22,7 +19,7 @@ AutoForm.addHooks(['createTopic'],{
 
 // done with matb33/meteor-collection-hooks package
 Topics.after.insert(function(userId, doc) {
-  Proposals.insert({topicId: doc._id, proposition: doc.firstProposal, plusVotes: 0, minusVotes: 0})
+  Proposals.insert({topicId: doc._id, proposition: doc.firstProposal, plusVotes: [], minusVotes: []})
 });
 
 Template.topicCreate.events({

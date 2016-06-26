@@ -12,10 +12,16 @@ Template.topicVote.events({
       // check how many group (or users here with one group) members we have....
       // this is dynamic as users might join later - then they become topic listener
       var proposal = Proposals.findOne({topicId: Session.get('voteTopic')});
-      Proposals.update({_id: proposal._id}, { $inc: { plusVotes: 1 } });
+      var plusVotesUpdate = proposal.plusVotes;
+      // add current user to plus votes
+      plusVotesUpdate.push(Meteor.userId());
+      Proposals.update({_id: proposal._id}, { $set: { plusVotes: plusVotesUpdate } });
     },
     'click .no': function(){
       var proposal = Proposals.findOne({topicId: Session.get('voteTopic')});
-      Proposals.update({_id: proposal._id}, { $inc: { minusVotes: 1 } });
+      var minusVotesUpdate = proposal.minusVotes;
+      // add current user to minus votes
+      minusVotesUpdate.push(Meteor.userId());
+      Proposals.update({_id: proposal._id}, { $set: { minusVotes: minusVotesUpdate } });
     }
 });
