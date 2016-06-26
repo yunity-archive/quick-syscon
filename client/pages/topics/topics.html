@@ -16,6 +16,7 @@
     </div>
   </div>
   <div class="ui cards topics">
+    {{#if currentUser}}
     {{#each topics}}
       <div class="card-wrapper">
         <a class="ui card {{votingStateColor}}" href="#">
@@ -47,5 +48,12 @@
         </a>
       </div>
     {{/each}}
+    {{else}}
+    <span>
+      <i class="login icon"></i>
+      Please sign in to work on topics!
+    </span>
+    {{/if}}
+
   </div>
 </template>

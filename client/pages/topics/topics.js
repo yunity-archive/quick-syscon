@@ -56,9 +56,14 @@ Template.topics.events({
     }
     else {
       // show results so far...
-      Session.set('topicVote', this._id);
-      Router.go('topicQuickResult');
-      // alert("You have already voted on this topic! - you will be notified when survey has completed");
+      var topic = Topics.findOne({_id: this._id});
+      if (topic.votingDone) {
+        Session.set('topicVote', this._id);
+        Router.go('topicQuickResult');
+      }
+      else {
+        alert("You have already voted on this topic! - you will be notified when survey has completed");
+      }
     }
 
     // if ($(e.target).parent('a.item').length === 0 && !$(e.target).is('a.item')) {
