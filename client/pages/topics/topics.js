@@ -5,6 +5,16 @@ Template.topics.helpers({
   // },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
+  },
+  votingStateColor: function() {
+    if (this.votingDone)
+      return "voting-done";
+
+    var proposal = Proposals.findOne({topicId: this._id});
+    if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0)
+      return "my-voting-done";
+
+    return "";
   }
 });
 
@@ -38,11 +48,17 @@ Template.topics.events({
     console.log(Meteor.userId());
     console.log(proposal.plusVotes.concat(proposal.minusVotes));
     console.log(proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()));
-    
+
     if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
       Session.set('topicVote', this._id);
       Router.go('topicVote');
       return false;
+    }
+    else {
+      // show results so far...
+      Session.set('topicVote', this._id);
+      Router.go('topicQuickResult');
+      // alert("You have already voted on this topic! - you will be notified when survey has completed");
     }
 
     // if ($(e.target).parent('a.item').length === 0 && !$(e.target).is('a.item')) {

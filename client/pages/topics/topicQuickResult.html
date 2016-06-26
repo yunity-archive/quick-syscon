@@ -12,12 +12,15 @@
               </div>
               Proposal: {{proposal}}
             </div>
-            Got accepted by all group members!
+              Vote completed by all group members!
             </a>
         </div>
-        <button type="button" class="ui done green button">Done</button>
-        <!-- <button type="button" class="ui red button">Download</button> -->
-
+        {{#if firstProposalAccepted}}
+          <button type="button" class="ui done green button">Done</button>
+          <!-- <button type="button" class="ui red button">Download</button> -->
+        {{else}}
+          <button type="button" class="ui deeper red button">DP</button>
+        {{/if}}
       </div>
   </div>
 
