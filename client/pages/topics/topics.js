@@ -25,14 +25,30 @@ Template.topics.events({
   },
   'click .topics .ui.card': function(e, template) {
     // open decision view
-    Meteor.call('notify', 'serverMessage:' , "ABC", "T", {
-            userCloseable: true,
-            timeout: 10
-    });
-    if ($(e.target).parent('a.item').length === 0 && !$(e.target).is('a.item')) {
-      Router.go('topics', {_id: this._id});
+    // TODO rm.. just for testing
+    // Meteor.call('notify', 'serverMessage:' , "ABC", "T", {
+    //         userCloseable: true,
+    //         timeout: 10
+    // });
+
+    // check whether user has already voted on selected topic -> if not -> vote
+    var proposal = Proposals.findOne({topicId: this._id});
+        console.log(this._id);
+
+    console.log(Meteor.userId());
+    console.log(proposal.plusVotes.concat(proposal.minusVotes));
+    console.log(proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()));
+    
+    if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
+      Session.set('topicVote', this._id);
+      Router.go('topicVote');
       return false;
     }
+
+    // if ($(e.target).parent('a.item').length === 0 && !$(e.target).is('a.item')) {
+    //   Router.go('topics', {_id: this._id});
+    //   return false;
+    // }
   },
   'click .logout': function(event){
       event.preventDefault();

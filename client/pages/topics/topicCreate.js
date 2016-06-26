@@ -12,7 +12,7 @@ AutoForm.addHooks(['createTopic'],{
         }
     },
     onSuccess: function(formType, result) {
-      Session.set('voteTopic', result);
+      Session.set('topicVote', result);
       Router.go('topicVote');
     }
 });
