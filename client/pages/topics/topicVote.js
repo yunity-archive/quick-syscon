@@ -41,10 +41,10 @@ Template.topicVote.events({
 function votingComplete() {
   var topic = Topics.findOne({_id: Session.get('topicVote')});
   var proposal = Proposals.findOne({topicId: Session.get('topicVote')});
-  return (proposal.minusVotes.concat(proposal.plusVotes).equals(topic.votingUsers));
+
+  return isSameSet(proposal.minusVotes.concat(proposal.plusVotes), topic.votingUsers);
 }
 
-Array.prototype.equals = function( array ) {
-  return this.length == array.length &&
-        this.every( function(this_i,i) { return this_i == array[i] } )
+function isSameSet(arr1, arr2) {
+  return  $(arr1).not(arr2).length === 0 && $(arr2).not(arr1).length === 0;
 }
