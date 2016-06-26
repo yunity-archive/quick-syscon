@@ -8,6 +8,10 @@ AutoForm.addHooks(['createTopic'],{
               allUsers.push(u._id);
             });
             doc.votingUsers = allUsers;
+
+            // insert owner
+            doc.owner = Meteor.userId();
+            
             return doc;
         }
     },

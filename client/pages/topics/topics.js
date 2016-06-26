@@ -22,6 +22,9 @@ Template.topics.helpers({
   },
   totalVotes: function() {
     return Topics.findOne({_id: this._id}).votingUsers.length;
+  },
+  ownTopic: function() {
+    return (Topics.findOne({_id: this._id}).owner === Meteor.userId());
   }
 });
 
