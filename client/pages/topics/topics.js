@@ -15,6 +15,13 @@ Template.topics.helpers({
       return "my-voting-done";
 
     return "";
+  },
+  currentVotes: function() {
+    var proposal = Proposals.findOne({topicId: this._id});
+    return proposal.plusVotes.length + proposal.minusVotes.length;
+  },
+  totalVotes: function() {
+    return Topics.findOne({_id: this._id}).votingUsers.length;
   }
 });
 
@@ -43,11 +50,9 @@ Template.topics.events({
 
     // check whether user has already voted on selected topic -> if not -> vote
     var proposal = Proposals.findOne({topicId: this._id});
-        console.log(this._id);
-
-    console.log(Meteor.userId());
-    console.log(proposal.plusVotes.concat(proposal.minusVotes));
-    console.log(proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()));
+    // console.log(Meteor.userId());
+    // console.log(proposal.plusVotes.concat(proposal.minusVotes));
+    // console.log(proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()));
 
     if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
       Session.set('topicVote', this._id);
