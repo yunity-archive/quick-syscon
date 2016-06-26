@@ -18,10 +18,14 @@ Template.topicVote.events({
       Proposals.update({_id: proposal._id}, { $set: { plusVotes: plusVotesUpdate } });
 
       if (votingComplete()) {
+        Session.set('topicQuickResult', Session.get('topicVote'));
+        Session.set('topicVote', undefined);
         Router.go('topicQuickResult');
       }
-      else
+      else {
+        Session.set('topicVote', undefined);
         Router.go('topics');
+      }
     },
     'click .no': function(){
       var proposal = Proposals.findOne({topicId: Session.get('topicVote')});
@@ -31,11 +35,18 @@ Template.topicVote.events({
       Proposals.update({_id: proposal._id}, { $set: { minusVotes: minusVotesUpdate } });
 
       if (votingComplete()) {
+        // TODO consider id passing by template routing and/or template subscriptions
+        // this session nightmere is to garantuee that no one enters view via back button
+        // and revotes!
+        Session.set('topicQuickResult', Session.get('topicVote'));
+        Session.set('topicVote', undefined);
         Router.go('topicQuickResult');
       }
-      else
+      else {
+        Session.set('topicVote', undefined);
         Router.go('topics');
       }
+    }
 });
 
 function votingComplete() {

@@ -33,7 +33,7 @@ Template.topics.events({
     Router.go('topicCreate');
   },
   'click .card .edit.item': function(e) {
-    Session.set('editTopic', this._id);
+    Session.set('topicEdit', this._id);
     Router.go('topicEdit');
     return false;
   },
@@ -66,11 +66,13 @@ Template.topics.events({
       // show results so far...
       var topic = Topics.findOne({_id: this._id});
       if (topic.votingDone) {
-        Session.set('topicVote', this._id);
+        Session.set('topicQuickResult', this._id);
         Router.go('topicQuickResult');
+        return false;
       }
       else {
         alert("You have already voted on this topic! - you will be notified when survey has completed");
+        return false;
       }
     }
 

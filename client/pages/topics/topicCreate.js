@@ -11,7 +11,7 @@ AutoForm.addHooks(['createTopic'],{
 
             // insert owner
             doc.owner = Meteor.userId();
-            
+
             return doc;
         }
     },
@@ -28,6 +28,7 @@ Topics.after.insert(function(userId, doc) {
 
 Template.topicCreate.events({
     'click .cancel': function(){
+       Session.set('topicVote', undefined);
        Router.go('topics');
     }
 });
