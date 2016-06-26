@@ -1,5 +1,5 @@
 Meteor.setInterval(function() {
-   serverMessages.notify('serverMessage:info', 'test', 'test', {});
+  //  serverMessages.notify('serverMessage:info', 'test', 'test', {});
 
     var topics = Topics.find();
     topics.forEach(function(topic){

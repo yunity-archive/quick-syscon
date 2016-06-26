@@ -8,3 +8,7 @@ Meteor.publish("proposals", () => {
 Meteor.publish("votes", () => {
   return Votes.find();
 });
+
+Meteor.publish("usersCount", function () {
+    return Meteor.users.find();
+});
