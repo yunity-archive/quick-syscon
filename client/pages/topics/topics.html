@@ -1,4 +1,5 @@
 <template name="topics">
+  {{#if currentUser}}
   <h1>Topics</h1>
   <div class="ui menu fitted basic">
     <a class="item">
@@ -16,7 +17,6 @@
     </div>
   </div>
   <div class="ui cards topics">
-    {{#if currentUser}}
     {{#each topics}}
       <div class="card-wrapper">
         <a class="ui card {{votingStateColor}}" href="#">
@@ -48,12 +48,11 @@
         </a>
       </div>
     {{/each}}
-    {{else}}
-    <span>
-      <i class="login icon"></i>
-      Please sign in to work on topics!
-    </span>
-    {{/if}}
-
   </div>
+  {{else}}
+  <span>
+    <i class="login icon"></i>
+    Please sign in to work on topics!
+  </span>
+  {{/if}}
 </template>
