@@ -11,14 +11,21 @@ Template.topics.helpers({
       return "voting-done";
 
     var proposal = Proposals.findOne({topicId: this._id});
-    if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0)
-      return "my-voting-done";
+    if (proposal)
+      if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0)
+        return "my-voting-done";
 
     return "";
   },
   currentVotes: function() {
     var proposal = Proposals.findOne({topicId: this._id});
-    return proposal.plusVotes.length + proposal.minusVotes.length;
+    var plusVotes;
+    var minusVotes;
+    if (proposal) {
+      if (proposal.plusVotes) plusVotes = proposal.plusVotes.length;
+      if (proposal.minusVotes) minusVotes = proposal.minusVotes.length;
+    }
+    return (plusVotes + minusVotes);
   },
   totalVotes: function() {
     return Topics.findOne({_id: this._id}).votingUsers.length;
