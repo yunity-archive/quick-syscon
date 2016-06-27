@@ -42,6 +42,7 @@ fastclick@1.0.12
 geojson-utils@1.0.9
 gfk:notifications@1.1.4
 gfk:server-messages@1.1.0
+gwendall:body-events@0.1.6
 hot-code-push@1.0.4
 html-tools@1.0.10
 htmljs@1.0.10

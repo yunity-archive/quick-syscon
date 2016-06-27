@@ -16,6 +16,10 @@ AutoForm.addHooks(['createTopic'],{
         }
     },
     onSuccess: function(formType, result) {
+      Meteor.call('notify', "New topic created", result, {
+              userCloseable: true,
+              timeout: 10
+      });
       Session.set('topicVote', result);
       Router.go('topicVote');
     }

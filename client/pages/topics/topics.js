@@ -44,13 +44,6 @@ Template.topics.events({
     return false;
   },
   'click .topics .ui.card': function(e, template) {
-    // open decision view
-    // TODO rm.. just for testing
-    // Meteor.call('notify', 'serverMessage:' , "ABC", "T", {
-    //         userCloseable: true,
-    //         timeout: 10
-    // });
-
     // check whether user has already voted on selected topic -> if not -> vote
     var proposal = Proposals.findOne({topicId: this._id});
     // console.log(Meteor.userId());
