@@ -1,0 +1,14 @@
+<template name="dp">
+  <h1>Deeper Processing on Topic xyz</h1>
+  <div class="ui cards topics">
+    {{#each proposals}}
+      <div class="card-wrapper">
+        <a class="ui card">
+          <div class="content {{stateColor}}">
+            <a class="header">{{proposition}}</a>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+</template>

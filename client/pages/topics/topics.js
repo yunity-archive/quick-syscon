@@ -1,7 +1,8 @@
 Template.topics.helpers({
   topics: function() {
-    var groupId = Groups.findOne({name: Session.get('activeGroup')})._id;
-    return Topics.find({group : groupId}, {sort: {'dateCreated': -1}});
+    var group = Groups.findOne({name: Session.get('activeGroup')});
+    if (group)
+      return Topics.find({group : group._id}, {sort: {'dateCreated': -1}});
   },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();

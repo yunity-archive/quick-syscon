@@ -23,8 +23,9 @@ Template.topicQuickResult.events({
     },
     'click .deeper': function(){
         Topics.update(Session.get('topicQuickResult'), { $set: { votingDone: true } });
+        Session.set('dp', Session.get('topicQuickResult'));
         Session.set('topicQuickResult', undefined);
-        Router.go('topics'); // TODO later we redirect to deeper processing here
+        Router.go('dp');
         return false;
     }
 });
