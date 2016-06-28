@@ -1,0 +1,4 @@
+topic.votingUsers field in Topic collection must be changed after
+
+1) user was created and added to ALL groups -> change for all topics each)
+2) user was added/removed from group -> change for all groups' topics

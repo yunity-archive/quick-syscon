@@ -1,13 +1,16 @@
 Template.topicQuickResult.helpers({
     topic: function(){
-       return Topics.findOne({_id: Session.get('topicQuickResult')}).text;
+      // TODO there is a strange undefined error in console
+      var topic = Topics.findOne({_id: Session.get('topicQuickResult')});
+      if (topic) return topic.text; else return "Loading ... ";
     },
     proposal: function(){
-       return Topics.findOne({_id: Session.get('topicQuickResult')}).firstProposal;
+       var topic = Topics.findOne({_id: Session.get('topicQuickResult')});
+       if (topic) return topic.firstProposal; else return "Loading ... ";
     },
     firstProposalAccepted: function(){
       var proposal = Proposals.findOne({topicId: Session.get('topicQuickResult')});
-      return (proposal.minusVotes.length == 0);
+      if (proposal) return (proposal.minusVotes.length == 0); else return "Loading ... ";
     }
 });
 

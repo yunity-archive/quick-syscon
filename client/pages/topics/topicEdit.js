@@ -1,8 +1,10 @@
 AutoForm.addHooks(['topicEdit'],{
-    onSuccess: function(formType, result) {
-        Proposals.update({topicId: doc._id, proposition: doc.firstProposal});
-        Router.go('topics');
-    }
+  onSuccess: function(formType, result) {
+      Router.go('topics');
+  },
+  onSubmit: function (insertDoc, updateDoc, currentDoc) {
+      Proposals.update({topicId: currentDoc._id, proposition: currentDoc.firstProposal});
+  }
 });
 
 Template.topicEdit.helpers({
