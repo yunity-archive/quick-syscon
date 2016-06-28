@@ -1,8 +1,8 @@
 Template.topics.helpers({
-  topics: () => Topics.find({}, {sort: {'dateCreated': -1}}),
-  // votes: function() {
-  //   return Votes.find({proposalId: this._id}).count();
-  // },
+  topics: function() {
+    var groupId = Groups.findOne({name: Session.get('activeGroup')})._id;
+    return Topics.find({group : groupId}, {sort: {'dateCreated': -1}});
+  },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
   },

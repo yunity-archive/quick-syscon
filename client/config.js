@@ -20,7 +20,3 @@ serverMessages.listen('serverMessage:error', function (subject, message, options
 Template.registerHelper("activeGroup", function (param2) {
     return Session.get('activeGroup');
 });
-
-Meteor.startup(function(){
-  Session.set('activeGroup', Groups.find().fetch()[0].name);
-});

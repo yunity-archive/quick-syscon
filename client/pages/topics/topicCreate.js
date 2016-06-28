@@ -9,17 +9,18 @@ AutoForm.addHooks(['createTopic'],{
             });
             doc.votingUsers = allUsers;
 
-            // insert owner
+            // insert owner (= user id ) and group id
             doc.owner = Meteor.userId();
+            doc.group = Groups.findOne({name: Session.get('activeGroup')})._id;
 
             return doc;
         }
     },
     onSuccess: function(formType, result) {
-      Meteor.call('notify', "New topic created", result, {
-              userCloseable: true,
-              timeout: 10
-      });
+      // Meteor.call('notify', "New topic created", result, {
+      //         userCloseable: true,
+      //         timeout: 10
+      // });
       Session.set('topicVote', result);
       Router.go('topicVote');
     }
