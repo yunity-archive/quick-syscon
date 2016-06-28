@@ -1,15 +1,13 @@
 <template name="groups">
   {{#if currentUser}}
-  <h1>Groups</h1>
-
+  <h1>Select Group</h1>
   <div class="ui cards topics">
     {{#each groups}}
       <div class="card-wrapper">
-        <a class="ui card {{votingStateColor}}" href="#">
-          <div class="content">
-            <div class="header">{{name}}</div>
+        <a class="ui card">
+          <div class="content {{stateColor}}">
+            <a class="header">{{name}}</a>
           </div>
-
         </a>
       </div>
     {{/each}}

@@ -15,3 +15,12 @@ serverMessages.listen('serverMessage:success', function (subject, message, optio
 serverMessages.listen('serverMessage:error', function (subject, message, options) {
   Notifications.error(subject, message, options);
 });
+
+// Global helper
+Template.registerHelper("activeGroup", function (param2) {
+    return Session.get('activeGroup');
+});
+
+Meteor.startup(function(){
+  Session.set('activeGroup', Groups.find().fetch()[0].name);
+});

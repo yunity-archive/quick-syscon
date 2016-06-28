@@ -11,6 +11,19 @@
       </a>
     </ul>
 
+    {{#if currentUser}}
+    <a class="ui card" href="#">
+      <div class="content">
+        <div class="header">Active Group ->  {{activeGroup}}</div>
+      </div>
+    </a>
+    {{/if}}
+    <!-- <div>
+      <a class="active-group item">
+        <i class="group icon"></i>
+      </a>
+    </div> -->
+
 
   <!-- {{#if currentUser}}
       Welcome {{loggedInUser}}       -> <a href="#" class="logout">Logout</a>

@@ -1,4 +1,7 @@
 // on startup we publish all collections - // Meteor.startup() runs AFTER this code!
+Meteor.publish("groups", () => {
+  return Groups.find();
+});
 Meteor.publish("topics", () => {
   return Topics.find();
 });
