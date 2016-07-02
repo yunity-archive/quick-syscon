@@ -1,14 +1,13 @@
-<template name="addProposal">
-
+<template name="proposalCreate">
   <div class="ui form proposal-form">
-
-    <h2>Create a new proposal</h2>
-
-    <div class="ui cards topics">
-        <div class="card-wrapper">
-      
-        </div>
+    <h2>Add new proposal</h2>
+    {{#autoForm collection="Proposals" id="createProposal" type="insert"}}
+      {{> afQuickField label="Proposition" name="proposition" rows=3}}
+      <div class="crud buttons">
+        <button type="button" class="ui red cancel button">Cancel</button>
+        <button type="submit" class="ui button submit green">Add Proposal</button>
       </div>
+      {{/autoForm}}
   </div>
 
 </template>

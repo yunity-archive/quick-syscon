@@ -23,7 +23,7 @@ Template.dp.events({
   "click .proposal": function(event, template){
       Router.go('dpVote');
   },
-  "click .add-proposal": function(event, template){
-      Router.go('addProposal');
+  "click .create-proposal": function(event, template){
+      Router.go('proposalCreate');
   }
 });

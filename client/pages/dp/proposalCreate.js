@@ -1,18 +1,19 @@
-
-Template.addProposal.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  }, 
-  destroyed: function(){
-
-  },
+AutoForm.addHooks(['createProposal'],{
+    before: {
+        insert: function(doc) {
+            console.log("insert");
+            doc.topicId = Session.get("dp");
+            return doc;
+        }
+    },
+    onSuccess: function(formType, result) {
+        console.log("onSuccess");
+      Router.go('dp');
+    }
 });
 
-Template.addProposal.events({
-  "click #foo": function(event, template){
-
+Template.proposalCreate.events({
+  "click .cancel": function(event, template){
+      Router.go('dp');
   }
 });
