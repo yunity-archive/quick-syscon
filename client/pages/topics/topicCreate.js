@@ -28,7 +28,7 @@ AutoForm.addHooks(['createTopic'],{
 
 // done with matb33/meteor-collection-hooks package
 Topics.after.insert(function(userId, doc) {
-  Proposals.insert({topicId: doc._id, proposition: doc.firstProposal, plusVotes: [], minusVotes: []})
+  Proposals.insert({topicId: doc._id, title: "1st proposal", proposition: doc.firstProposal, plusVotes: [], minusVotes: []})
 });
 
 Template.topicCreate.events({

@@ -6,5 +6,5 @@ Meteor.subscribe("proposals");
 Meteor.subscribe("votes");
 
 Meteor.subscribe('usersCount', [], function() {
-    console.log('subscribed.');
+    // console.log('subscribed.');
 });

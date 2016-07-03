@@ -34,6 +34,13 @@ Template.topicVote.events({
       minusVotesUpdate.push(Meteor.userId());
       Proposals.update({_id: proposal._id}, { $set: { minusVotes: minusVotesUpdate } });
 
+      console.log(proposal.minusVotes);
+      console.log(proposal.minusVotes.length);
+      // 1st neg vote -> add passive solution to dp
+      if (proposal.minusVotes.length <= 1) {
+          Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "user prop", plusVotes: [], minusVotes: []})
+      }
+
       if (votingComplete()) {
         // TODO consider id passing by template routing and/or template subscriptions
         // this session nightmere is to garantuee that no one enters view via back button

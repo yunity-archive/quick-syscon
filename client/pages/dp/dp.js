@@ -11,12 +11,6 @@ Template.dp.helpers({
   proposals: function() {
     return Proposals.find({topicId: Session.get("dp")});
   },
-  passiveSolution: function() {
-    return Topics.findOne({_id: Session.get("dp")}).passiveSolution;
-  },
-  deeperProcess: function() {
-    return Topics.findOne({_id: Session.get("dp")}).deeperProcess;
-  },
   stateColor: function() {
     var vote = this.resistance;
     if (this.resistance) {
