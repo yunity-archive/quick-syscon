@@ -1,0 +1,62 @@
+<template name="archive">
+  {{#if currentUser}}
+  <h1>Archived topics</h1>
+  <div class="ui menu fitted basic">
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui cards topics">
+    {{#each topics}}
+      <div class="card-wrapper">
+        <a class="ui card {{votingStateColor}}" href="#">
+          <div class="content">
+            <div class="header">{{text}}</div>
+          </div>
+
+          <div class="extra content">
+            <div class="left floated meta">
+              <span>
+                <i class="check icon"></i>
+                {{currentVotes}} of {{totalVotes}} users voted
+              </span>
+              <span>
+                <i class="time icon"></i>
+                {{sinceCreated}}
+              </span>
+            </div>
+            {{#if ownTopic}}
+            <div class="right floated ui icon menu basic">
+              <a class="edit item">
+                <i class="pencil icon"></i>
+              </a>
+
+              <a class="delete item text-hover-red">
+                <i class="remove icon"></i>
+              </a>
+            </div>
+            {{else}}
+            <div class="right floated ui icon menu basic">
+              <a class="edit item">
+                <i class="help icon"></i>
+              </a>
+            </div>
+            {{/if}}
+          </div>
+
+        </a>
+      </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <span>
+    <i class="login icon"></i>
+    Please sign in to work on topics!
+  </span>
+  {{/if}}
+</template>

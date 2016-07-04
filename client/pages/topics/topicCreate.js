@@ -12,6 +12,7 @@ AutoForm.addHooks(['createTopic'],{
             // insert owner (= user id ) and group id
             doc.owner = Meteor.userId();
             doc.group = Groups.findOne({name: Session.get('activeGroup')})._id;
+            doc.dateCreated = new Date();
 
             return doc;
         }

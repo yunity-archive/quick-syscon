@@ -2,7 +2,7 @@ Template.topics.helpers({
   topics: function() {
     var group = Groups.findOne({name: Session.get('activeGroup')});
     if (group)
-      return Topics.find({group : group._id}, {sort: {'dateCreated': -1}});
+      return Topics.find({group : group._id, votingDone : false}, {sort: {'dateCreated': -1}});
   },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();

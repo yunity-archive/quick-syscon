@@ -4,7 +4,7 @@
     {{#autoForm collection="Topics" id="createTopic" type="insert"}}
       {{> afQuickField label="Topic" name="text" rows=3}}
       {{> afQuickField label="Proposal" name="firstProposal" rows=3}}
-      {{> afQuickField label="Duration" name="duration"}}
+      {{> afQuickField label="Duration [hours]" name="duration" value=12}}
       <div class="crud buttons">
         <button type="button" class="ui red cancel button">Cancel</button>
         <button type="submit" class="ui button submit green">Start Topic</button>

@@ -2,6 +2,7 @@
   <div class="ui form proposal-form">
     <h2>Add new proposal</h2>
     {{#autoForm collection="Proposals" id="createProposal" type="insert"}}
+      {{> afQuickField label="Title" name="title"}}
       {{> afQuickField label="Proposition" name="proposition" rows=3}}
       <div class="crud buttons">
         <button type="button" class="ui red cancel button">Cancel</button>
