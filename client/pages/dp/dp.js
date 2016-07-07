@@ -1,12 +1,6 @@
 Template.dp.helpers({
-  create: function(){
-
-  },
-  rendered: function(){
-
-  },
-  destroyed: function(){
-
+  topic: function() {
+    return Topics.findOne({_id: Session.get("dp")}).text;
   },
   proposals: function() {
     return Proposals.find({topicId: Session.get("dp")});

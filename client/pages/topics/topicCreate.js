@@ -14,6 +14,7 @@ AutoForm.addHooks(['createTopic'],{
             doc.group = Groups.findOne({name: Session.get('activeGroup')})._id;
             doc.dateCreated = new Date();
             doc.votingDone = false;
+            doc.dp = false;
 
             return doc;
         }
@@ -30,7 +31,7 @@ AutoForm.addHooks(['createTopic'],{
 
 // done with matb33/meteor-collection-hooks package
 Topics.after.insert(function(userId, doc) {
-  Proposals.insert({topicId: doc._id, title: "1st proposal", proposition: doc.firstProposal, plusVotes: [], minusVotes: []})
+  Proposals.insert({topicId: doc._id, title: "1st proposal", proposition: doc.firstProposal, noRes: [], someRes: [], hiRes: [], plusVotes: [], minusVotes: []});
 });
 
 Template.topicCreate.events({

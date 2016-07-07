@@ -2,7 +2,7 @@ Template.topics.helpers({
   topics: function() {
     var group = Groups.findOne({name: Session.get('activeGroup')});
     if (group)
-      return Topics.find({group : group._id, votingDone : false}, {sort: {'dateCreated': -1}});
+      return Topics.find({group : group._id}, {sort: {'dateCreated': -1}});
   },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
@@ -66,6 +66,11 @@ Template.topics.events({
     else {
       // show results so far...
       var topic = Topics.findOne({_id: this._id});
+      if (topic.dp) {
+        Session.set('dp', this._id);
+        Router.go('dp');
+        return false;
+      }
       if (topic.votingDone) {
         Session.set('topicQuickResult', this._id);
         Router.go('topicQuickResult');

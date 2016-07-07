@@ -11,7 +11,8 @@ Template.topicVote.events({
     'click .ok': function(){
       // check how many group (or users here with one group) members we have....
       // this is dynamic as users might join later - then they become topic listener
-      var proposal = Proposals.findOne({topicId: Session.get('topicVote')});
+      // TRICK: here we query creation date to find the initial 1st proposal created for this topic
+      var proposal = Proposals.find({topicId: Session.get('topicVote')}, {sort: {dateCreated: 1}}).fetch()[0];
       var plusVotesUpdate = proposal.plusVotes;
       // add current user to plus votes
       plusVotesUpdate.push(Meteor.userId());
@@ -28,7 +29,7 @@ Template.topicVote.events({
       }
     },
     'click .no': function(){
-      var proposal = Proposals.findOne({topicId: Session.get('topicVote')});
+      var proposal = Proposals.find({topicId: Session.get('topicVote')}, {sort: {dateCreated: 1}}).fetch()[0];
       var minusVotesUpdate = proposal.minusVotes;
       // add current user to minus votes
       minusVotesUpdate.push(Meteor.userId());
@@ -36,9 +37,13 @@ Template.topicVote.events({
 
       console.log(proposal.minusVotes);
       console.log(proposal.minusVotes.length);
+
+
       // 1st neg vote -> add passive solution to dp
       if (proposal.minusVotes.length <= 1) {
-          Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "user prop", plusVotes: [], minusVotes: []})
+          // START DEEPER PROCESSING
+          Topics.update({_id: Session.get('topicVote')}, { $set: { dp: true } });
+          Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "user prop", noRes: [], someRes: [], hiRes: [], plusVotes: [], minusVotes: []});
       }
 
       if (votingComplete()) {

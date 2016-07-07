@@ -1,6 +1,6 @@
 Template.header.helpers({
   buttonLink: function() {
-    if (Router.current().route.path(this) == "/archive") return "Topics"; else return "Archive";
+    if (Router.current().route.path(this) == "/topics") return "Archive"; else return "Topics";
   }
 });
 
@@ -13,9 +13,9 @@ Template.header.events({
       return false;
    },
    'click .button-link': function(){
-     if (Router.current().route.path(this) == "/archive")
-          Router.go('topics');
-     else Router.go('archive');
+     if (Router.current().route.path(this) == "/topics")
+          Router.go('archive');
+     else Router.go('topics');
       return false;
    }
 });
