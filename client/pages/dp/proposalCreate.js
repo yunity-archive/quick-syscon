@@ -3,6 +3,9 @@ AutoForm.addHooks(['createProposal'],{
         insert: function(doc) {
             console.log("insert");
             doc.topicId = Session.get("dp");
+            doc.noRes = [];
+            doc.someRes = [];
+            doc.hiRes = [];
             return doc;
         }
     },
