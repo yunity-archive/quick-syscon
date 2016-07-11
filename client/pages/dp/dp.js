@@ -6,18 +6,21 @@ Template.dp.helpers({
     return Proposals.find({topicId: Session.get("dp")});
   },
   stateColor: function() {
-    var vote = this.resistance;
-    if (this.resistance) {
-      if (vote == "high") return "hi-resistance";
-      if (vote == "some") return "some-resistance";
-      if (vote == "none") return "no-resistance";
+    if (this.noRes.indexOf(Meteor.userId()) >= 0) {
+      return "no-resistance";
+    }
+    if (this.someRes.indexOf(Meteor.userId()) >= 0) {
+      return "some-resistance";
+    }
+    if (this.hiRes.indexOf(Meteor.userId()) >= 0) {
+      return "hi-resistance";
     }
   }
 });
 
 Template.dp.events({
   "click .proposal": function(event, template){
-      if (!this.resistance) {
+      if (!alreadyVotedOnProposal(this)) {
         Session.set("dpVote", this._id);
         Router.go('dpVote');
       }
@@ -29,3 +32,8 @@ Template.dp.events({
       Router.go('proposalCreate');
   }
 });
+
+function alreadyVotedOnProposal(proposal) {
+  return ((proposal.noRes.indexOf(Meteor.userId()) >= 0) || (proposal.someRes.indexOf(Meteor.userId()) >= 0)
+  || (proposal.hiRes.indexOf(Meteor.userId()) >= 0));
+}

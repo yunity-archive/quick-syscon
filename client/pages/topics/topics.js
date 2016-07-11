@@ -8,14 +8,19 @@ Template.topics.helpers({
     return moment(this.dateCreated).fromNow();
   },
   votingStateColor: function() {
-    if (this.votingDone)
-      return "voting-done";
-
-    var proposal = Proposals.findOne({topicId: this._id});
-    if (proposal)
-      if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0)
-        return "my-voting-done";
-
+    if (Proposals.find({topicId: this._id}).count() > 1) {
+      return "voting-in-dp";
+    }
+    else {
+      var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
+      if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0) {
+        if (this.votingDone) return "voting-done";
+        else return "my-voting-done";
+      }
+      else {
+        return "not-voted-yet";
+      }
+    }
     return "";
   },
   currentVotes: function() {

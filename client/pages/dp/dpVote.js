@@ -20,6 +20,8 @@ Template.dpVote.events({
         console.log("all users voted on this prop");
       };
       if (allProposalsVotingComplete()) {
+        Router.go('result');
+        return false;
         console.log("all proposals have been voted on");
       };
       Router.go('dp');
@@ -35,6 +37,8 @@ Template.dpVote.events({
       console.log("prop complete");
     };
     if (allProposalsVotingComplete()) {
+      Router.go('result');
+      return false;
       console.log("all proposals have been voted on");
     };
       Router.go('dp');
@@ -50,6 +54,8 @@ Template.dpVote.events({
       console.log("prop complete");
     };
     if (allProposalsVotingComplete()) {
+      Router.go('result');
+      return false;
       console.log("all proposals have been voted on");
     };
       Router.go('dp');
