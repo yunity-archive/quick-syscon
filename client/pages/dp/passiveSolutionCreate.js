@@ -13,7 +13,9 @@ AutoForm.addHooks(['createPassiveSolution'],{
     },
     onSuccess: function(formType, result) {
         console.log("onSuccess");
-      Router.go('topics');
+        Session.set('dp', Session.get('topicVote'));
+        Session.set('topicVote', undefined);
+        Router.go('dp');
     }
 });
 
