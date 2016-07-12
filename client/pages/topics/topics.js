@@ -7,6 +7,17 @@ Template.topics.helpers({
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
   },
+  timeleft: function() {
+    var endingTime = moment(this.dateCreated).add(this.duration, 'day');
+    var result = endingTime.diff(moment(), 'hours');
+    if (result > 48) { // more than 2 days return days
+      return endingTime.diff(moment(), 'days') + " days";
+    }
+    if (result < 2) { // less than 2 hours return minutes
+      return endingTime.diff(moment(), 'minutes') + " minutes";
+    }
+    return result  + " hours";
+  },
   votingStateColor: function() {
     if (Proposals.find({topicId: this._id}).count() > 1) {
       return "voting-in-dp";
