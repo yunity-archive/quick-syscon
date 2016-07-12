@@ -24,7 +24,7 @@ Template.topics.helpers({
     return "";
   },
   currentVotes: function() {
-    var proposal = Proposals.findOne({topicId: this._id});
+    var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
     var plusVotes;
     var minusVotes;
     if (proposal) {
@@ -59,16 +59,22 @@ Template.topics.events({
   'click .topics .ui.card': function(e, template) {
     // check whether user has already voted on selected topic -> if not -> vote
     var proposal = Proposals.findOne({topicId: this._id});
-    // console.log(Meteor.userId());
-    // console.log(proposal.plusVotes.concat(proposal.minusVotes));
-    // console.log(proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()));
-
-    if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
-      Session.set('topicVote', this._id);
-      Router.go('topicVote');
-      return false;
+    if (proposal.plusVotes) {
+      if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
+        Session.set('topicVote', this._id);
+        Router.go('topicVote');
+        return false;
+      }
     }
-    else {
+
+    if (proposal.minusVotes) {
+      if (proposal.minusVotes.concat(proposal.plusVotes).indexOf(Meteor.userId()) == -1) {
+        Session.set('topicVote', this._id);
+        Router.go('topicVote');
+        return false;
+      }
+    }
+
       // show results so far...
       var topic = Topics.findOne({_id: this._id});
       if (topic.dp) {
@@ -85,12 +91,6 @@ Template.topics.events({
         alert("You have already voted on this topic! - you will be notified when survey has completed");
         return false;
       }
-    }
-
-    // if ($(e.target).parent('a.item').length === 0 && !$(e.target).is('a.item')) {
-    //   Router.go('topics', {_id: this._id});
-    //   return false;
-    // }
   },
   'click .logout': function(event){
       event.preventDefault();

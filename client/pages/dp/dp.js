@@ -6,15 +6,16 @@ Template.dp.helpers({
     return Proposals.find({topicId: Session.get("dp")});
   },
   stateColor: function() {
-    if (this.noRes.indexOf(Meteor.userId()) >= 0) {
+    if (this.noRes && this.noRes.indexOf(Meteor.userId()) >= 0) {
       return "no-resistance";
     }
-    if (this.someRes.indexOf(Meteor.userId()) >= 0) {
+    if (this.someRes && this.someRes.indexOf(Meteor.userId()) >= 0) {
       return "some-resistance";
     }
-    if (this.hiRes.indexOf(Meteor.userId()) >= 0) {
+    if (this.hiRes && this.hiRes.indexOf(Meteor.userId()) >= 0) {
       return "hi-resistance";
     }
+    return "normal-card";
   },
   allProposalsVotingComplete: function() {
     return allProposalsVotingComplete();
