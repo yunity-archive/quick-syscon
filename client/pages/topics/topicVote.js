@@ -42,8 +42,11 @@ Template.topicVote.events({
       // 1st neg vote -> add passive solution to dp
       if (proposal.minusVotes.length <= 1) {
           // START DEEPER PROCESSING
+          console.log("mm");
           Topics.update({_id: Session.get('topicVote')}, { $set: { dp: true } });
-          Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "a computer generated prop", noRes: [], someRes: [], hiRes: [], plusVotes: [], minusVotes: []});
+          Router.go("passiveSolutionCreate");
+          return false;
+          // Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "a computer generated prop", noRes: [], someRes: [], hiRes: [], plusVotes: [], minusVotes: []});
       }
 
       if (votingComplete()) {
@@ -63,7 +66,7 @@ Template.topicVote.events({
 
 function votingComplete() {
   var topic = Topics.findOne({_id: Session.get('topicVote')});
-  var proposal = Proposals.findOne({topicId: Session.get('topicVote')});
+  var proposal = Proposals.findOne({topicId: Session.get('topicVote'), title: "1st proposal"});
 
   return isSameSet(proposal.minusVotes.concat(proposal.plusVotes), topic.votingUsers);
 }

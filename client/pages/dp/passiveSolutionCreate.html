@@ -1,0 +1,14 @@
+<template name="passiveSolutionCreate">
+  <div class="ui form proposal-form">
+    <h2>Add the passive solution </h2>
+    {{#autoForm collection="Proposals" id="createPassiveSolution" type="insert"}}
+      {{> afQuickField label="Title" name="title" default="Passive Solution"}}
+      {{> afQuickField label="Proposition" name="proposition" rows=3}}
+      <div class="crud buttons">
+        <button type="button" class="ui red cancel button">Cancel</button>
+        <button type="submit" class="ui button submit green">Add passive solution</button>
+      </div>
+      {{/autoForm}}
+  </div>
+
+</template>

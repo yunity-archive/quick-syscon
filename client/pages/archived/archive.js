@@ -11,7 +11,7 @@ Template.archive.helpers({
     if (this.votingDone)
       return "voting-done";
 
-    var proposal = Proposals.findOne({topicId: this._id});
+    var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
     if (proposal)
       if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0)
         return "my-voting-done";
@@ -19,7 +19,7 @@ Template.archive.helpers({
     return "";
   },
   currentVotes: function() {
-    var proposal = Proposals.findOne({topicId: this._id});
+    var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
     var plusVotes;
     var minusVotes;
     if (proposal) {

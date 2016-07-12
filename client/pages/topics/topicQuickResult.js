@@ -9,7 +9,7 @@ Template.topicQuickResult.helpers({
        if (topic) return topic.firstProposal; else return "Loading ... ";
     },
     firstProposalAccepted: function(){
-      var proposal = Proposals.findOne({topicId: Session.get('topicQuickResult')});
+      var proposal = Proposals.findOne({topicId: Session.get('topicQuickResult'), title: "1st proposal"});
       if (proposal) return (proposal.minusVotes.length == 0); else return "Loading ... ";
     }
 });

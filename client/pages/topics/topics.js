@@ -50,6 +50,10 @@ Template.topics.events({
     Router.go('topicEdit');
     return false;
   },
+  'click .card .help.item': function(e) {
+    alert("you do not own this topic");
+    return false;
+  },
   'click .card .delete.item': function(e) {
     if (confirm('Are you sure you want to delete this topic?')) {
       Topics.remove(this._id);
@@ -58,7 +62,7 @@ Template.topics.events({
   },
   'click .topics .ui.card': function(e, template) {
     // check whether user has already voted on selected topic -> if not -> vote
-    var proposal = Proposals.findOne({topicId: this._id});
+    var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
     if (proposal.plusVotes) {
       if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
         Session.set('topicVote', this._id);
