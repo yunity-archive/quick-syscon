@@ -2,24 +2,18 @@
 
   <h2>Result</h2>
 
-  <div class="ui">
-    <div class="nested">
-        <a class="ui card">
-          <div class="content proposal {{stateColor}}">
-            <a class="header">Result1</a>
-          </div>
-        </a>
-      </div>
+  <table>
 
-    <div class="nested">
+    <tr>
+    <td></td> | <td>participants</td> | <td>total resistance</td> | <td>avg resistance</td> | <td>avg acceptance</td>
+    </tr>
 
-        <a class="ui card">
-          <div class="content proposal {{stateColor}}">
-            <a class="header">table2</a>
-          </div>
-        </a>
-
-          </div>
-  </div>
+    {{#each proposals}}
+      <tr>
+      <td>{{title}}</td>| <td>{{participants}}</td> |
+      </tr>
+      <br>
+    {{/each}}
+  </table>
 
 </template>

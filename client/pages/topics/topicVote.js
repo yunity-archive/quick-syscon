@@ -43,7 +43,7 @@ Template.topicVote.events({
       if (proposal.minusVotes.length <= 1) {
           // START DEEPER PROCESSING
           Topics.update({_id: Session.get('topicVote')}, { $set: { dp: true } });
-          Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "user prop", noRes: [], someRes: [], hiRes: [], plusVotes: [], minusVotes: []});
+          Proposals.insert({topicId: Session.get('topicVote'), title: "Passive solution", proposition: "a computer generated prop", noRes: [], someRes: [], hiRes: [], plusVotes: [], minusVotes: []});
       }
 
       if (votingComplete()) {
