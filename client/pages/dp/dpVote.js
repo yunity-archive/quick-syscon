@@ -4,34 +4,69 @@ Template.dpVote.helpers({
   },
   proposition: function() {
     return Proposals.findOne({_id: Session.get("dpVote")}).proposition;
+  },
+  noColor: function() {
+    var p = Proposals.findOne({_id: Session.get("dpVote")});
+    if (p.noRes && p.noRes.indexOf(Meteor.userId()) >= 0)
+      return "no-resistance";
+  },
+  someColor: function() {
+    var p = Proposals.findOne({_id: Session.get("dpVote")});
+    if (p.someRes && p.someRes.indexOf(Meteor.userId()) >= 0)
+      return "some-resistance";
+  },
+  hiColor: function() {
+    var p = Proposals.findOne({_id: Session.get("dpVote")});
+    if (p.hiRes && p.hiRes.indexOf(Meteor.userId()) >= 0)
+      return "hi-resistance";
   }
 });
 
 
 Template.dpVote.events({
   "click .none": function(event, template){
-      var proposal = Proposals.findOne({_id : Session.get('dpVote')});
-      var noResUpdate = proposal.noRes;
-      // add current user to noRes votes
-      noResUpdate.push(Meteor.userId());
-      Proposals.update({_id: proposal._id}, { $set: { noRes: noResUpdate } });
+    var proposal = Proposals.findOne({_id : Session.get('dpVote')});
+    // Find and remove item from an array - from all 3 voting states
+    var i = proposal.noRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.noRes.splice(i, 1);
+    i = proposal.someRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.someRes.splice(i, 1);
+    i = proposal.hiRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.hiRes.splice(i, 1);
+    
+    var noResUpdate = proposal.noRes;
+    var someResUpdate = proposal.someRes;
+    var hiResUpdate = proposal.hiRes;
+    // add current user to noRes votes
+    noResUpdate.push(Meteor.userId());
+    Proposals.update({_id: proposal._id}, { $set: { noRes: noResUpdate, someRes: someResUpdate, hiRes: hiResUpdate } });
 
-      if (proposalVotingComplete()) {
-        console.log("all users voted on this prop");
-      };
-      if (allProposalsVotingComplete()) {
-        Router.go('result');
-        return false;
-        console.log("all proposals have been voted on");
-      };
-      Router.go('dp');
+    if (proposalVotingComplete()) {
+      console.log("all users voted on this prop");
+    };
+    if (allProposalsVotingComplete()) {
+      Router.go('result');
+      return false;
+      console.log("all proposals have been voted on");
+    };
+    Router.go('dp');
   },
   "click .some": function(event, template){
     var proposal = Proposals.findOne({_id : Session.get('dpVote')});
+    // Find and remove item from an array - from all 3 voting states
+    var i = proposal.noRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.noRes.splice(i, 1);
+    i = proposal.someRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.someRes.splice(i, 1);
+    i = proposal.hiRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.hiRes.splice(i, 1);
+
+    var noResUpdate = proposal.noRes;
     var someResUpdate = proposal.someRes;
+    var hiResUpdate = proposal.hiRes;
     // add current user to noRes votes
     someResUpdate.push(Meteor.userId());
-    Proposals.update({_id: proposal._id}, { $set: { someRes: someResUpdate } });
+    Proposals.update({_id: proposal._id}, { $set: { noRes: noResUpdate, someRes: someResUpdate, hiRes: hiResUpdate } });
 
     if (proposalVotingComplete()) {
       console.log("prop complete");
@@ -45,10 +80,20 @@ Template.dpVote.events({
   },
   "click .high": function(event, template){
     var proposal = Proposals.findOne({_id : Session.get('dpVote')});
+    // Find and remove item from an array - from all 3 voting states
+    var i = proposal.noRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.noRes.splice(i, 1);
+    i = proposal.someRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.someRes.splice(i, 1);
+    i = proposal.hiRes.indexOf(Meteor.userId());
+    if(i != -1) proposal.hiRes.splice(i, 1);
+
+    var noResUpdate = proposal.noRes;
+    var someResUpdate = proposal.someRes;
     var hiResUpdate = proposal.hiRes;
     // add current user to noRes votes
     hiResUpdate.push(Meteor.userId());
-    Proposals.update({_id: proposal._id}, { $set: { hiRes: hiResUpdate } });
+    Proposals.update({_id: proposal._id}, { $set: { noRes: noResUpdate, someRes: someResUpdate, hiRes: hiResUpdate } });
 
     if (proposalVotingComplete()) {
       console.log("prop complete");
@@ -87,4 +132,9 @@ function allProposalsVotingComplete() {
 
 function isSameSet(arr1, arr2) {
   return  $(arr1).not(arr2).length === 0 && $(arr2).not(arr1).length === 0;
+}
+
+function alreadyVotedOnProposal(proposal) {
+  return ((proposal.noRes.indexOf(Meteor.userId()) >= 0) || (proposal.someRes.indexOf(Meteor.userId()) >= 0)
+  || (proposal.hiRes.indexOf(Meteor.userId()) >= 0));
 }

@@ -24,13 +24,8 @@ Template.dp.helpers({
 
 Template.dp.events({
   "click .proposal": function(event, template){
-      if (!alreadyVotedOnProposal(this)) {
-        Session.set("dpVote", this._id);
-        Router.go('dpVote');
-      }
-      else {
-        alert("already voted");
-      }
+      Session.set("dpVote", this._id);
+      Router.go('dpVote');
   },
   "click .create-proposal": function(event, template){
       Router.go('proposalCreate');
@@ -40,10 +35,10 @@ Template.dp.events({
   }
 });
 
-function alreadyVotedOnProposal(proposal) {
-  return ((proposal.noRes.indexOf(Meteor.userId()) >= 0) || (proposal.someRes.indexOf(Meteor.userId()) >= 0)
-  || (proposal.hiRes.indexOf(Meteor.userId()) >= 0));
-}
+// function alreadyVotedOnProposal(proposal) {
+//   return ((proposal.noRes.indexOf(Meteor.userId()) >= 0) || (proposal.someRes.indexOf(Meteor.userId()) >= 0)
+//   || (proposal.hiRes.indexOf(Meteor.userId()) >= 0));
+// }
 
 
 function isSameSet(arr1, arr2) {
