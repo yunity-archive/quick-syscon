@@ -21,6 +21,7 @@ AutoForm.addHooks(['createPassiveSolution'],{
 
 Template.passiveSolutionCreate.events({
   "click .cancel": function(event, template){
+      alert('no passive solution added');
       Router.go('topics');
   }
 });

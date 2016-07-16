@@ -2,13 +2,13 @@ Template.topics.helpers({
   topics: function() {
     var group = Groups.findOne({name: Session.get('activeGroup')});
     if (group)
-      return Topics.find({group : group._id}, {sort: {'dateCreated': -1}});
+      return Topics.find({group : group._id, votingState: {$ne: "archive"}}, {sort: {'dateCreated': -1}});
   },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
   },
   timeleft: function() {
-    var endingTime = moment(this.dateCreated).add(this.duration, 'day');
+    var endingTime = moment(this.dateCreated).add(this.duration, 'hours');
     var result = endingTime.diff(moment(), 'hours');
     if (result > 48) { // more than 2 days return days
       return endingTime.diff(moment(), 'days') + " days";
@@ -25,7 +25,7 @@ Template.topics.helpers({
     else {
       var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
       if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) >= 0) {
-        if (this.votingDone) return "voting-done";
+        if (this.votingState == "voting-done") return "voting-done";
         else return "my-voting-done";
       }
       else {
@@ -97,7 +97,7 @@ Template.topics.events({
         Router.go('dp');
         return false;
       }
-      if (topic.votingDone) {
+      if (topic.votingState == "voting-done") {
         Session.set('topicQuickResult', this._id);
         Router.go('topicQuickResult');
         return false;

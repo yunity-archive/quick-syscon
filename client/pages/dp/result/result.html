@@ -5,12 +5,12 @@
   <table>
 
     <tr>
-    <td></td> | <td>participants</td> | <td>total resistance</td> | <td>avg resistance</td> | <td>avg acceptance</td>
+    <td></td> | <td>participants</td> | <td>total resistance (2 points max vote)</td> | <td>avg resistance</td> | <td>avg acceptance</td>
     </tr>
 
     {{#each proposals}}
       <tr>
-      <td>{{title}}</td>| <td>{{participants}}</td> |
+      <td>{{title}}</td>| <td>{{participants}} / {{participantsMax}}</td> |  <td>{{totalResistance}} / {{totalResistanceMax}}</td> | <td>{{avgResistance}}%</td>| <td>{{avgAcceptance}}%</td>
       </tr>
       <br>
     {{/each}}

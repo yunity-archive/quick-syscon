@@ -13,7 +13,7 @@ AutoForm.addHooks(['createTopic'],{
             doc.owner = Meteor.userId();
             doc.group = Groups.findOne({name: Session.get('activeGroup')})._id;
             doc.dateCreated = new Date();
-            doc.votingDone = false;
+            doc.votingState = "voting";
             doc.dp = false;
 
             return doc;

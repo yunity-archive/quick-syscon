@@ -2,13 +2,13 @@ Template.archive.helpers({
   topics: function() {
     var group = Groups.findOne({name: Session.get('activeGroup')});
     if (group)
-      return Topics.find({group : group._id, votingDone: true, dp: false}, {sort: {'dateCreated': -1}});
+      return Topics.find({group : group._id, votingState: "archive"}, {sort: {'dateCreated': -1}});
   },
   sinceCreated: function() {
     return moment(this.dateCreated).fromNow();
   },
   votingStateColor: function() {
-    if (this.votingDone)
+    if (this.votingState == "voting-done")
       return "voting-done";
 
     var proposal = Proposals.findOne({topicId: this._id, title: "1st proposal"});
@@ -37,4 +37,7 @@ Template.archive.helpers({
 });
 
 Template.archive.events({
+  'click .card': function(){
+      Router.go('result');
+  }
 });

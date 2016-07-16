@@ -1,4 +1,5 @@
 topic.votingUsers field in Topic collection must be changed after
 
-1) user was created and added to ALL groups -> change for all topics each)
-2) user was added/removed from group -> change for all groups' topics
+1) ### user was created and added to ALL groups -> change for all topics each) - OK NOW
+2) user was added/removed from group -> change for all groups' topics - TODO
+3) Also check result page - max participants- TODO

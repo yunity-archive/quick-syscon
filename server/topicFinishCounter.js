@@ -7,7 +7,7 @@ Meteor.setInterval(function() {
       var result = endTime.diff(startTime, 'seconds');
 
       if (result >= topic.duration * 3600) { // be precise to the level of a second
-        topic.votingDone = true;
+        Topics.update(topic._id, { $set: { votingState: "archive"} });
       }
     });
 }, 1000); // call this every 1000ms

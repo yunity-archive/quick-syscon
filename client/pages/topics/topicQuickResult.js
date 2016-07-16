@@ -16,13 +16,13 @@ Template.topicQuickResult.helpers({
 
 Template.topicQuickResult.events({
     'click .done': function(){
-        Topics.update(Session.get('topicQuickResult'), { $set: { votingDone: true } });
+        Topics.update(Session.get('topicQuickResult'), { $set: { votingState: "voting-done" } });
         Session.set('topicQuickResult', undefined);
         Router.go('topics');
         return false;
     },
     'click .deeper': function(){
-        Topics.update(Session.get('topicQuickResult'), { $set: { votingDone: true } });
+        Topics.update(Session.get('topicQuickResult'), { $set: { votingState: "dp" } });
         Session.set('dp', Session.get('topicQuickResult'));
         Session.set('topicQuickResult', undefined);
         Router.go('dp');
