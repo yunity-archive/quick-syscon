@@ -8,6 +8,13 @@ Meteor.setInterval(function() {
 
       if (result >= topic.duration * 3600) { // be precise to the level of a second
         Topics.update(topic._id, { $set: { votingState: "archive"} });
+          // TODO SLACK_TOPIC_TIME_RUNUP();
       }
     });
 }, 1000); // call this every 1000ms
+
+  // TODO SLACK_TOPIC_CREATE();
+  // TODO SLACK_TOPIC_TIME_RUNUP();
+
+  // 1) result nicht anonym machen - toggle button
+  // 2) if result -

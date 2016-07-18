@@ -33,7 +33,7 @@ Template.dpVote.events({
     if(i != -1) proposal.someRes.splice(i, 1);
     i = proposal.hiRes.indexOf(Meteor.userId());
     if(i != -1) proposal.hiRes.splice(i, 1);
-    
+
     var noResUpdate = proposal.noRes;
     var someResUpdate = proposal.someRes;
     var hiResUpdate = proposal.hiRes;
@@ -45,6 +45,7 @@ Template.dpVote.events({
       console.log("all users voted on this prop");
     };
     if (allProposalsVotingComplete()) {
+      Topics.update({_id : Session.get('dp')}, { $set: { votingState: "archive" } });
       Router.go('result');
       return false;
       console.log("all proposals have been voted on");
@@ -72,6 +73,7 @@ Template.dpVote.events({
       console.log("prop complete");
     };
     if (allProposalsVotingComplete()) {
+      Topics.update({_id : Session.get('dp')}, { $set: { votingState: "archive" } });
       Router.go('result');
       return false;
       console.log("all proposals have been voted on");
@@ -99,6 +101,7 @@ Template.dpVote.events({
       console.log("prop complete");
     };
     if (allProposalsVotingComplete()) {
+      Topics.update({_id : Session.get('dp')}, { $set: { votingState: "archive" } });
       Router.go('result');
       return false;
       console.log("all proposals have been voted on");

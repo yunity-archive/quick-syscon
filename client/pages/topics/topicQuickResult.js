@@ -16,6 +16,7 @@ Template.topicQuickResult.helpers({
 
 Template.topicQuickResult.events({
     'click .done': function(){
+        // TODO SLACK_TOPIC_DONE();
         Topics.update(Session.get('topicQuickResult'), { $set: { votingState: "voting-done" } });
         Session.set('topicQuickResult', undefined);
         Router.go('topics');

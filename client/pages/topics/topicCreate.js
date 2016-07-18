@@ -20,6 +20,7 @@ AutoForm.addHooks(['createTopic'],{
         }
     },
     onSuccess: function(formType, result) {
+      // TODO SLACK_TOPIC_CREATE();
       // Meteor.call('notify', "New topic created", result, {
       //         userCloseable: true,
       //         timeout: 10
