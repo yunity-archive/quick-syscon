@@ -1,20 +1,10 @@
 {
-  "scripts": {
-    "start": "meteor",
-    "test": "true"
-  },
-  "dependencies": {
-    "autoprefixer": "^6.3.1",
-    "bcrypt": "^0.8.7",
-    "faker": "^3.0.1"
+  "devDependencies": {
+    "autoprefixer": "^6.3.1"
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {
-        "browsers": [
-          "last 2 versions"
-        ]
-      }
+      "autoprefixer": {"browsers": ["last 2 versions"]}
     }
   }
 }
