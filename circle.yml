@@ -7,7 +7,7 @@ dependencies:
   override:
     - curl https://install.meteor.com | /bin/sh
     - npm install
-    - meteor update
+    - meteor
 deployment:
   yuca:
     branch: master
