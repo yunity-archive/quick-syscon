@@ -8,26 +8,30 @@
     <a class="orange item" href="{{pathFor route='topics'}}">
     	Topics
     </a>
+    <a class="orange item" href="{{pathFor route='archive'}}">
+    	Archive
+    </a>
     {{#if currentUser}}
-    <a class="orange item">
+    <a class="orange item active-group">
 	    Active Group ->  {{activeGroup}}
 	</a>
-	<a class="orange item">
+	<!--a class="orange item">
 	  	{{buttonLink}}
-	</a>
+	</a-->
 	{{/if}}
+	<a class="profile item" href="{{pathFor route='profile'}}" >
+		<i class="white icon"></i>
+	</a>
 	<div class="ui inverted right orange menu">
 	    <div class="ui item">
 	        {{> notifications}}
 	    </div>
 	    {{#if currentUser}}
 		<a class="profile item">
-			<i class="user orange icon"></i>
+			<i class="user white icon"></i>
 		</a>
 		 
-	   	<div class="ui item">
-	       	<div class="ui primary button">Log Out</div>
-	   	</div>
+	    <a class="ui orange button item" href="{{pathFor route='login'}}">Logout</a>
 	   	{{else}}
    	   	<a class="ui orange button item" href="{{pathFor route='login'}}">Login</a>
    		<a class="ui orange button item" href="{{pathFor route='register'}}">Register</a>

@@ -5,9 +5,9 @@ Template.header.helpers({
 });
 
 Template.header.events({
-   'click .user':function(){
+  /* 'click .user':function(){
       Router.go('profile');
-   },
+   },*/
    'click .active-group': function(){
       Router.go('groups');
       return false;
