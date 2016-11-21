@@ -20,7 +20,7 @@ Template.header.events({
       return false;
    },
    'click .logo' : function(){
-    Router.go('/');
+    Router.go('groups');
     return false;
    },
    'click .groups': function(){
