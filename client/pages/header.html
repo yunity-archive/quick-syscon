@@ -1,40 +1,41 @@
 <template name="header">
-	<div class="item" href="">
+	<div class="item logo">
 		<img src="/syscon-icon-white.png"/>
 	</div>
-    <a class="item" href="{{pathFor route='groups'}}">
+	{{#if currentUser}}
+    <a class="item groups">
+	    Active Group ->  {{activeGroup}}
+	</a>
+	{{else}}
+    <a class="item groups">
     	Groups
     </a>
-    <a class="orange item" href="{{pathFor route='topics'}}">
+	{{/if}}
+
+    <a class="item topics">
     	Topics
     </a>
-    <a class="orange item" href="{{pathFor route='archive'}}">
+    <a class="item" href="{{pathFor route='archive'}}">
     	Archive
     </a>
     {{#if currentUser}}
-    <a class="orange item active-group">
-	    Active Group ->  {{activeGroup}}
-	</a>
 	<!--a class="orange item">
 	  	{{buttonLink}}
 	</a-->
 	{{/if}}
-	<a class="profile item" href="{{pathFor route='profile'}}" >
-		<i class="white icon"></i>
-	</a>
 	<div class="ui inverted right orange menu">
 	    <div class="ui item">
 	        {{> notifications}}
 	    </div>
 	    {{#if currentUser}}
-		<a class="profile item">
+		<a class="item profile">
 			<i class="user white icon"></i>
 		</a>
 		 
-	    <a class="ui orange button item" href="{{pathFor route='login'}}">Logout</a>
+	    <a class="item logout">Logout</a>
 	   	{{else}}
-   	   	<a class="ui orange button item" href="{{pathFor route='login'}}">Login</a>
-   		<a class="ui orange button item" href="{{pathFor route='register'}}">Register</a>
+   	   	<a class="item" href="{{pathFor route='login'}}">Login</a>
+   		<a class="item" href="{{pathFor route='register'}}">Register</a>
     	{{/if}}
   	</div>
     <!-- <div>

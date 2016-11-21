@@ -5,10 +5,22 @@ Template.header.helpers({
 });
 
 Template.header.events({
-  /* 'click .user':function(){
+   'click .topics' : function() {
+      Router.go('topics', {groups: Session.get('activeGroup')});
+   },
+   'click .profile' : function(){
       Router.go('profile');
-   },*/
-   'click .active-group': function(){
+      return false;
+   },
+   'click .logout' : function() {
+      Meteor.logout();
+      return false;
+   },
+   'click .logo' : function(){
+    Router.go('/');
+    return false;
+   },
+   'click .groups': function(){
       Router.go('groups');
       return false;
    },

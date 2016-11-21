@@ -1,14 +1,19 @@
 Meteor.startup(function() {
   const group = {
-    name: 'Unity1'
+    name: 'yunity'
   };
   const group2 = {
-    name: 'Unity2'
+    name: 'fstool'
   };
   const group3 = {
-    name: 'Unity3'
+    name: 'syscon'
   };
-
+  const group4 = {
+    name: 'alpega'
+  };
+  const group5 = {
+    name: 'harmony'
+  };
   if (!Groups.findOne({name: group.name})) {
     Groups.insert(group);
   }
@@ -18,7 +23,12 @@ Meteor.startup(function() {
   if (!Groups.findOne({name: group3.name})) {
     Groups.insert(group3);
   }
-
+  if (!Groups.findOne({name: group4.name})) {
+    Groups.insert(group4);
+  }
+  if (!Groups.findOne({name: group5.name})) {
+    Groups.insert(group5);
+  }
   // // might insert duplicates
   // proposal.topicId = Topics.findOne({text: topic.text})._id;
   // Proposals.insert(proposal);
