@@ -13,19 +13,16 @@ Template.header.events({
    },
    'click .profile' : function(){
       Router.go('profile');
-      return false;
    },
    'click .logout' : function() {
       Meteor.logout();
-      return false;
+      Router.go('login');
    },
    'click .logo' : function(){
     Router.go('groups');
-    return false;
    },
    'click .groups': function(){
       Router.go('groups');
-      return false;
    },
    //'click .button-link': function(){
    //  if (Router.current().route.path(this) == "/topics")

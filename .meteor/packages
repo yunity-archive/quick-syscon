@@ -44,7 +44,7 @@ http@1.2.10
 gwendall:body-events
 shell-server
 semantic:ui
-kadira:flow-router
 iron:router
 juliancwirko:postcss
 less
+kevohagan:sweetalert
