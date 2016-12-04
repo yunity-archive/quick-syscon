@@ -1,5 +1,5 @@
 Template.register.events({
-  'click #register-button': function(e, t) {
+  'submit form': function(e, t) {
      e.preventDefault();
      // Retrieve the input field values
      var email = $('#email').val(),

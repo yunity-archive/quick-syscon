@@ -1,12 +1,7 @@
 <template name="topics">
-  {{#if currentUser}}
-  <h1>Topics</h1>
   <div class="ui menu fitted basic">
-    <a class="item">
-      <div class="ui icon button green create">
-        <i class="plus icon"></i>
-      </div>
-    </a>
+  <h1>Topics</h1>
+  {{#if currentUser}}
     <div class="right menu">
       <div class="item">
         <div class="ui icon input">
@@ -14,7 +9,13 @@
           <i class="search link icon"></i>
         </div>
       </div>
+      <a class="item">
+        <div class="ui icon button green create">
+          <i class="plus icon"></i>
+        </div>
+      </a>
     </div>
+  {{/if}}
   </div>
   <div class="ui cards topics">
     {{#each topics}}
@@ -58,6 +59,7 @@
       </div>
     {{/each}}
   </div>
+  {{#if currentUser}}
   {{else}}
   <span>
     <i class="login icon"></i>

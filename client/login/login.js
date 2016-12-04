@@ -1,5 +1,5 @@
 Template.login.events({
-  'click #login-button': function(e, t) {
+  'submit form': function(e, t) {
      e.preventDefault();
 
      // Getting values from fields on page

@@ -1,5 +1,22 @@
 <template name="groups">
+  <div class="ui menu fitted basic">
   <h1>Select Group</h1>
+  {{#if currentUser}}
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <a class="item">
+        <div class="ui icon button green create">
+          <i class="plus icon"></i>
+        </div>
+      </a>
+    </div>
+  {{/if}}
+  </div>
   <div class="ui link cards topics">
     {{#each groups}}
       <div class="card-wrapper">
