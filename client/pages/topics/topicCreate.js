@@ -38,6 +38,6 @@ Topics.after.insert(function(userId, doc) {
 Template.topicCreate.events({
     'click .cancel': function(){
        Session.set('topicVote', undefined);
-       Router.go('topics');
+       Router.go('topics', {groups: Session.get('activeGroup')});
     }
 });

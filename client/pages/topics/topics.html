@@ -60,6 +60,14 @@
     {{/each}}
   </div>
   {{#if currentUser}}
+  <div id="modal" class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">New Project</div>
+  <div class="content">
+    {{> topicCreate}}
+  </div>
+  
+  </div>
   {{else}}
   <span>
     <i class="login icon"></i>
