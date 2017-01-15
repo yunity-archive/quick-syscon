@@ -21,11 +21,11 @@ Template.topicVote.events({
       if (votingComplete()) {
         Session.set('topicQuickResult', Session.get('topicVote'));
         Session.set('topicVote', undefined);
-        Router.go('topicQuickResult');
+        Router.go('topicQuickResult', {groups: Session.get('activeGroup')});
       }
       else {
         Session.set('topicVote', undefined);
-        Router.go('topics');
+        Router.go('topics', {groups: Session.get('activeGroup')});
       }
     },
     'click .no': function(){
@@ -55,11 +55,11 @@ Template.topicVote.events({
         // and revotes!
         Session.set('topicQuickResult', Session.get('topicVote'));
         Session.set('topicVote', undefined);
-        Router.go('topicQuickResult');
+        Router.go('topicQuickResult', {groups: Session.get('activeGroup')});
       }
       else {
         Session.set('topicVote', undefined);
-        Router.go('topics');
+        Router.go('topics', {groups: Session.get('activeGroup')});
       }
     }
 });

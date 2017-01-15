@@ -26,7 +26,8 @@ AutoForm.addHooks(['createTopic'],{
       //         timeout: 10
       // });
       Session.set('topicVote', result);
-      Router.go('topicVote');
+      Router.go('topicVote', {groups: Session.get('activeGroup')});
+
     }
 });
 

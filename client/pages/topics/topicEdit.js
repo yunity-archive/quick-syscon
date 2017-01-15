@@ -1,6 +1,7 @@
 AutoForm.addHooks(['topicEdit'],{
   onSuccess: function(formType, result) {
-      Router.go('topics');
+      Router.go('topics', {groups: Session.get('activeGroup')});
+
   },
   onSubmit: function (insertDoc, updateDoc, currentDoc) {
       Proposals.update({topicId: currentDoc._id, proposition: currentDoc.firstProposal});
@@ -16,6 +17,6 @@ Template.topicEdit.helpers({
 Template.topicEdit.events({
     'click .cancel': function(){
        Session.set('topicEdit', undefined);
-       Router.go('topics');
+       Router.go('topics', {groups: Session.get('activeGroup')});
     }
 });

@@ -19,7 +19,7 @@ Template.topicQuickResult.events({
         // TODO SLACK_TOPIC_DONE();
         Topics.update(Session.get('topicQuickResult'), { $set: { votingState: "voting-done" } });
         Session.set('topicQuickResult', undefined);
-        Router.go('topics');
+        Router.go('topics', {groups: Session.get('activeGroup')});
         return false;
     },
     'click .deeper': function(){

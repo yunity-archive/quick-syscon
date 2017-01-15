@@ -54,11 +54,11 @@ Template.topics.helpers({
 
 Template.topics.events({
   'click .create.button': function() {
-    Router.go('topicCreate');
+    Router.go('topicCreate', {groups: Session.get('activeGroup')});
   },
   'click .card .edit.item': function(e) {
     Session.set('topicEdit', this._id);
-    Router.go('topicEdit');
+    Router.go('topicEdit', {groups: Session.get('activeGroup')});
     return false;
   },
   'click .card .help.item': function(e) {
@@ -77,7 +77,7 @@ Template.topics.events({
     if (proposal.plusVotes) {
       if (proposal.plusVotes.concat(proposal.minusVotes).indexOf(Meteor.userId()) == -1) {
         Session.set('topicVote', this._id);
-        Router.go('topicVote');
+        Router.go('topicVote', {groups: Session.get('activeGroup')});
         return false;
       }
     }
@@ -85,7 +85,7 @@ Template.topics.events({
     if (proposal.minusVotes) {
       if (proposal.minusVotes.concat(proposal.plusVotes).indexOf(Meteor.userId()) == -1) {
         Session.set('topicVote', this._id);
-        Router.go('topicVote');
+        Router.go('topicVote', {groups: Session.get('activeGroup')});
         return false;
       }
     }
@@ -99,7 +99,10 @@ Template.topics.events({
       }
       if (topic.votingState == "voting-done") {
         Session.set('topicQuickResult', this._id);
-        Router.go('topicQuickResult');
+        //Router.go('topicQuickResult');
+
+        Router.go('topicsQuickResult', {groups: Session.get('activeGroup')});
+
         return false;
       }
       else {
