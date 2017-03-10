@@ -1,0 +1,84 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react", "babel", "flowtype"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+       "no-console": [
+        "error",
+        { "allow": [
+        "warn", "error"
+        ]}
+        ],
+      "quotes": [
+            2,
+            "single"
+        ],
+      "linebreak-style": [
+            2,
+            "unix"
+    ],
+    "no-extra-semi": "error",
+    "semi": ["error", "never"],
+    "flowtype/boolean-style": [
+      2,
+      "boolean"
+    ],
+    "flowtype/define-flow-type": 1,
+    "flowtype/generic-spacing": [
+      2,
+      "never"
+    ],
+    "flowtype/require-parameter-type": 2,
+    "flowtype/require-return-type": [
+      2,
+      "always",
+      {
+        "annotateUndefined": "never"
+      }
+    ],
+    "flowtype/require-valid-file-annotation": 2,
+    "flowtype/semi": [
+      2,
+      "never"
+    ],
+    "flowtype/space-after-type-colon": [
+      2,
+      "always"
+    ],
+    "flowtype/space-before-generic-bracket": [
+      2,
+      "never"
+    ],
+    "flowtype/space-before-type-colon": [
+      2,
+      "never"
+    ],
+    "flowtype/union-intersection-spacing": [
+      2,
+      "always"
+    ],
+    "flowtype/use-flow-type": 1,
+    "flowtype/valid-syntax": 1,
+    "indent": [
+        2,
+        4
+        ]
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": false
+    }
+  }
+}

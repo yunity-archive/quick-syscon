@@ -1,0 +1,6 @@
+{
+    "public": {
+        "inactivityTimeout": "180000",
+        "heartbeatInterval": "5000"
+    }
+}

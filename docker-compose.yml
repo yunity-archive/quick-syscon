@@ -1,0 +1,17 @@
+version: "2"
+services:
+  mongo:
+    image: mongo:3.2.8
+    restart: always
+    ports:
+      - "27017"
+  crater:
+    image: jedwards1211/$NAME:$TAG
+    ports:
+      - "$PORT:80"
+    environment:
+      - ROOT_URL=$ROOT_URL
+      - MONGO_URL=mongodb://mongo:27017/$NAME
+      - METEOR_SETTINGS=$METEOR_SETTINGS
+    depends_on:
+      - mongo

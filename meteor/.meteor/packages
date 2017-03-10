@@ -1,0 +1,36 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor@1.6.1
+mongo@1.1.15
+webapp@1.3.13
+session@1.1.7                       # Client-side reactive dictionary for your app
+tracker@1.1.2                       # Meteor's client-side reactive programming library
+alanning:roles
+accounts-base@1.2.14
+accounts-password@1.3.4
+
+#for export
+ostrio:meteor-root              #enables meteor root path for files
+#cfs:standard-packages
+#cfs:filesystem
+#cfs:gridfs
+netanelgilad:excel
+
+babrahams:constellation         #for testing
+msavin:mongol                   # helper to see mongo data with crtl + M.
+
+# shs helper packages
+aldeed:simple-schema
+dburles:collection-helpers    # allows you to define helpers on your collections
+sewdn:collection-behaviours   # custom behaviour patterns. soft delete, autoIncremented,sortable
+reywood:publish-composite
+aldeed:collection2
+matb33:collection-hooks
+richsilv:dumb-collections     #syncs with server only on demand.
+alanning:elasticsearch
+deanius:promise
+promise@0.8.8
