@@ -10,6 +10,7 @@ import { correctHeight, detectBody } from './Helpers.js';
 
 import './../../../styles/app.less'
 import './../../../styles/layout.less' //Bootstrap 3.3.7 + reset styles
+import './../../../styles/main.less' //semantic quatsch styles + reset styles
 // import './../../../styles/font-awesome.css';
 // import './../../../styles/sweetalert2.css';
 // import './../../../styles/styles.css'; // Inspinia Stylesheet

@@ -14,9 +14,11 @@ import Progress from './Progress.js'
 import ReduxToastr from 'react-redux-toastr'
 import { correctHeight, detectBody } from './Helpers.js'
 
-
 import './../../../styles/app.less'
 import './../../../styles/layout.less' //Bootstrap 3.3.7 + reset styles
+import './../../../styles/main.less' //semantic quatsch styles + reset styles
+// import './../../../styles/app.less'
+// import './../../../styles/layout.less' //Bootstrap 3.3.7 + reset styles
 // import './../../../styles/font-awesome.css' // Icon Font
 // import './../../../styles/sweetalert2.css' // Alert Styles
 // import './../../../styles/icheck_skins/all.css' // Icheck Plugin Stylesheet
